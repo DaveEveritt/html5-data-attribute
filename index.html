@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML collection to array</title>
+  <style>
+    .exciting {
+      box-sizing: border-box;
+      background: #ccf;
+      padding: .5em;
+      transition: all .5s;
+    }
+  </style>
+</head>
+<body>
+
+  <p class="paras" data-len="100" data-desc="Excellent!">boring 01</p>
+  <p class="paras" data-len="80" data-desc="Fantastic!">tedious 02</p>
+  <p class="paras" data-len="70" data-desc="Great!">enervating 03</p>
+  <p class="paras" data-len="60" data-desc="Good!">boring 04</p>
+
+  <button id="showData">Show results</button>
+
+<script>
+  const showData = document.getElementById('showData');
+  const elArray = document.getElementsByClassName('paras');
+
+  /*
+    elArray is an "HTML Collection" you need to
+    convert in to an array with the "spread" operator ...
+  */
+  const els = [...elArray];
+  // console.log(elArray, els);
+
+  const changeEl = (el) => {
+    el.classList.add("exciting");
+    el.innerHTML = `${el.dataset.desc} Score: ${el.dataset.len}`;
+    el.style.width = `${el.dataset.len}%`;
+  }
+
+  showData.addEventListener("click", () => els.map(changeEl));
+
+</script>
+
+</body>
+</html>
